@@ -50,7 +50,7 @@
             "color": {
               "field": "production_plus1",
               "type": "quantitative",
-              "title": "Wheat production (tonnes, log scale)",
+              "title": "(Log scale) Wheat production (tonnes)",
               "scale": {"type": "log", "scheme": "blues"}
             },
             "tooltip": [
@@ -63,7 +63,6 @@
     };
 
     vegaEmbed('#vis', spec).then(result => {
-      // chart rendered
     }).catch(console.error);
   </script>
 </body>
