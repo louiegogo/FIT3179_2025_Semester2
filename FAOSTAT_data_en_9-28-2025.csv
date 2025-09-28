@@ -1,0 +1,167 @@
+﻿Domain Code,Domain,Area Code (M49),Area,Element Code,Element,Item Code (CPC),Item,Year Code,Year,Unit,Value,Flag,Flag Description,Note
+"QCL","Crops and livestock products","004","Afghanistan","5510","Production","0111","Wheat","2023","2023","t","4300000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","008","Albania","5510","Production","0111","Wheat","2023","2023","t","233584.68","A","Official figure",""
+"QCL","Crops and livestock products","012","Algeria","5510","Production","0111","Wheat","2023","2023","t","2500000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","024","Angola","5510","Production","0111","Wheat","2023","2023","t","20921","A","Official figure",""
+"QCL","Crops and livestock products","032","Argentina","5510","Production","0111","Wheat","2023","2023","t","12555860","A","Official figure",""
+"QCL","Crops and livestock products","051","Armenia","5510","Production","0111","Wheat","2023","2023","t","177859.6","A","Official figure",""
+"QCL","Crops and livestock products","036","Australia","5510","Production","0111","Wheat","2023","2023","t","41199486","A","Official figure",""
+"QCL","Crops and livestock products","040","Austria","5510","Production","0111","Wheat","2023","2023","t","1744820","A","Official figure",""
+"QCL","Crops and livestock products","031","Azerbaijan","5510","Production","0111","Wheat","2023","2023","t","1792419.1","A","Official figure",""
+"QCL","Crops and livestock products","050","Bangladesh","5510","Production","0111","Wheat","2023","2023","t","1107195","A","Official figure",""
+"QCL","Crops and livestock products","112","Belarus","5510","Production","0111","Wheat","2023","2023","t","2400000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","056","Belgium","5510","Production","0111","Wheat","2023","2023","t","1791170","A","Official figure",""
+"QCL","Crops and livestock products","064","Bhutan","5510","Production","0111","Wheat","2023","2023","t","837.01","A","Official figure",""
+"QCL","Crops and livestock products","068","Bolivia (Plurinational State of)","5510","Production","0111","Wheat","2023","2023","t","272806.32","A","Official figure",""
+"QCL","Crops and livestock products","070","Bosnia and Herzegovina","5510","Production","0111","Wheat","2023","2023","t","228012","A","Official figure",""
+"QCL","Crops and livestock products","072","Botswana","5510","Production","0111","Wheat","2023","2023","t","810","A","Official figure",""
+"QCL","Crops and livestock products","076","Brazil","5510","Production","0111","Wheat","2023","2023","t","7730188","A","Official figure",""
+"QCL","Crops and livestock products","100","Bulgaria","5510","Production","0111","Wheat","2023","2023","t","6854760","A","Official figure",""
+"QCL","Crops and livestock products","108","Burundi","5510","Production","0111","Wheat","2023","2023","t","7959.93","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","120","Cameroon","5510","Production","0111","Wheat","2023","2023","t","599.67","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","124","Canada","5510","Production","0111","Wheat","2023","2023","t","31954115","A","Official figure",""
+"QCL","Crops and livestock products","148","Chad","5510","Production","0111","Wheat","2023","2023","t","1399","A","Official figure",""
+"QCL","Crops and livestock products","152","Chile","5510","Production","0111","Wheat","2023","2023","t","1289773.79","A","Official figure",""
+"QCL","Crops and livestock products","159","China","5510","Production","0111","Wheat","2023","2023","t","136596100","E","Estimated value",""
+"QCL","Crops and livestock products","156","China, mainland","5510","Production","0111","Wheat","2023","2023","t","136590100","A","Official figure",""
+"QCL","Crops and livestock products","158","China, Taiwan Province of","5510","Production","0111","Wheat","2023","2023","t","6000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","170","Colombia","5510","Production","0111","Wheat","2023","2023","t","9354","A","Official figure",""
+"QCL","Crops and livestock products","191","Croatia","5510","Production","0111","Wheat","2023","2023","t","834230","A","Official figure",""
+"QCL","Crops and livestock products","196","Cyprus","5510","Production","0111","Wheat","2023","2023","t","27850","A","Official figure",""
+"QCL","Crops and livestock products","203","Czechia","5510","Production","0111","Wheat","2023","2023","t","5262360","A","Official figure",""
+"QCL","Crops and livestock products","408","Democratic People's Republic of Korea","5510","Production","0111","Wheat","2023","2023","t","67367.33","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","180","Democratic Republic of the Congo","5510","Production","0111","Wheat","2023","2023","t","9000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","208","Denmark","5510","Production","0111","Wheat","2023","2023","t","3556260","A","Official figure",""
+"QCL","Crops and livestock products","218","Ecuador","5510","Production","0111","Wheat","2023","2023","t","3976.02","A","Official figure",""
+"QCL","Crops and livestock products","818","Egypt","5510","Production","0111","Wheat","2023","2023","t","9700000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","232","Eritrea","5510","Production","0111","Wheat","2023","2023","t","25000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","233","Estonia","5510","Production","0111","Wheat","2023","2023","t","694120","A","Official figure",""
+"QCL","Crops and livestock products","748","Eswatini","5510","Production","0111","Wheat","2023","2023","t","705.14","E","Estimated value",""
+"QCL","Crops and livestock products","231","Ethiopia","5510","Production","0111","Wheat","2023","2023","t","5800000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","246","Finland","5510","Production","0111","Wheat","2023","2023","t","749030","A","Official figure",""
+"QCL","Crops and livestock products","250","France","5510","Production","0111","Wheat","2023","2023","t","35995570","A","Official figure",""
+"QCL","Crops and livestock products","268","Georgia","5510","Production","0111","Wheat","2023","2023","t","147000","A","Official figure",""
+"QCL","Crops and livestock products","276","Germany","5510","Production","0111","Wheat","2023","2023","t","21535900","A","Official figure",""
+"QCL","Crops and livestock products","300","Greece","5510","Production","0111","Wheat","2023","2023","t","1309180","A","Official figure",""
+"QCL","Crops and livestock products","320","Guatemala","5510","Production","0111","Wheat","2023","2023","t","0","E","Estimated value",""
+"QCL","Crops and livestock products","340","Honduras","5510","Production","0111","Wheat","2023","2023","t","1279.48","E","Estimated value",""
+"QCL","Crops and livestock products","348","Hungary","5510","Production","0111","Wheat","2023","2023","t","5941990","A","Official figure",""
+"QCL","Crops and livestock products","356","India","5510","Production","0111","Wheat","2023","2023","t","110553675.31","A","Official figure",""
+"QCL","Crops and livestock products","364","Iran (Islamic Republic of)","5510","Production","0111","Wheat","2023","2023","t","14000000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","368","Iraq","5510","Production","0111","Wheat","2023","2023","t","4247726","A","Official figure",""
+"QCL","Crops and livestock products","372","Ireland","5510","Production","0111","Wheat","2023","2023","t","483910","A","Official figure",""
+"QCL","Crops and livestock products","376","Israel","5510","Production","0111","Wheat","2023","2023","t","136000","A","Official figure",""
+"QCL","Crops and livestock products","380","Italy","5510","Production","0111","Wheat","2023","2023","t","6894470","A","Official figure",""
+"QCL","Crops and livestock products","392","Japan","5510","Production","0111","Wheat","2023","2023","t","1094000","A","Official figure",""
+"QCL","Crops and livestock products","400","Jordan","5510","Production","0111","Wheat","2023","2023","t","26698","A","Official figure",""
+"QCL","Crops and livestock products","398","Kazakhstan","5510","Production","0111","Wheat","2023","2023","t","12110913","A","Official figure",""
+"QCL","Crops and livestock products","404","Kenya","5510","Production","0111","Wheat","2023","2023","t","309492","A","Official figure",""
+"QCL","Crops and livestock products","414","Kuwait","5510","Production","0111","Wheat","2023","2023","t","25.29","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","417","Kyrgyzstan","5510","Production","0111","Wheat","2023","2023","t","440415","A","Official figure",""
+"QCL","Crops and livestock products","428","Latvia","5510","Production","0111","Wheat","2023","2023","t","2136800","A","Official figure",""
+"QCL","Crops and livestock products","422","Lebanon","5510","Production","0111","Wheat","2023","2023","t","100000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","426","Lesotho","5510","Production","0111","Wheat","2023","2023","t","6366","A","Official figure",""
+"QCL","Crops and livestock products","434","Libya","5510","Production","0111","Wheat","2023","2023","t","130000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","440","Lithuania","5510","Production","0111","Wheat","2023","2023","t","4455390","A","Official figure",""
+"QCL","Crops and livestock products","442","Luxembourg","5510","Production","0111","Wheat","2023","2023","t","72360","A","Official figure",""
+"QCL","Crops and livestock products","450","Madagascar","5510","Production","0111","Wheat","2023","2023","t","2845.51","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","454","Malawi","5510","Production","0111","Wheat","2023","2023","t","1000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","466","Mali","5510","Production","0111","Wheat","2023","2023","t","38500","A","Official figure",""
+"QCL","Crops and livestock products","470","Malta","5510","Production","0111","Wheat","2023","2023","t","0","A","Official figure",""
+"QCL","Crops and livestock products","478","Mauritania","5510","Production","0111","Wheat","2023","2023","t","2000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","484","Mexico","5510","Production","0111","Wheat","2023","2023","t","3476026.8","A","Official figure",""
+"QCL","Crops and livestock products","496","Mongolia","5510","Production","0111","Wheat","2023","2023","t","443415.59","A","Official figure",""
+"QCL","Crops and livestock products","499","Montenegro","5510","Production","0111","Wheat","2023","2023","t","2221.84","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","504","Morocco","5510","Production","0111","Wheat","2023","2023","t","4158471.49","A","Official figure",""
+"QCL","Crops and livestock products","508","Mozambique","5510","Production","0111","Wheat","2023","2023","t","16000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","104","Myanmar","5510","Production","0111","Wheat","2023","2023","t","80000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","516","Namibia","5510","Production","0111","Wheat","2023","2023","t","24696","A","Official figure",""
+"QCL","Crops and livestock products","524","Nepal","5510","Production","0111","Wheat","2023","2023","t","2098462.16","A","Official figure",""
+"QCL","Crops and livestock products","528","Netherlands (Kingdom of the)","5510","Production","0111","Wheat","2023","2023","t","1096820","A","Official figure",""
+"QCL","Crops and livestock products","540","New Caledonia","5510","Production","0111","Wheat","2023","2023","t","12.37","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","554","New Zealand","5510","Production","0111","Wheat","2023","2023","t","391615","A","Official figure",""
+"QCL","Crops and livestock products","562","Niger","5510","Production","0111","Wheat","2023","2023","t","5495.3","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","566","Nigeria","5510","Production","0111","Wheat","2023","2023","t","52757.03","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","807","North Macedonia","5510","Production","0111","Wheat","2023","2023","t","215165","A","Official figure",""
+"QCL","Crops and livestock products","578","Norway","5510","Production","0111","Wheat","2023","2023","t","172000","A","Official figure",""
+"QCL","Crops and livestock products","512","Oman","5510","Production","0111","Wheat","2023","2023","t","7892","A","Official figure",""
+"QCL","Crops and livestock products","586","Pakistan","5510","Production","0111","Wheat","2023","2023","t","28160500","A","Official figure",""
+"QCL","Crops and livestock products","275","Palestine","5510","Production","0111","Wheat","2023","2023","t","35699.98","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","600","Paraguay","5510","Production","0111","Wheat","2023","2023","t","1288310","A","Official figure",""
+"QCL","Crops and livestock products","604","Peru","5510","Production","0111","Wheat","2023","2023","t","193589.65","A","Official figure",""
+"QCL","Crops and livestock products","616","Poland","5510","Production","0111","Wheat","2023","2023","t","12932390","A","Official figure",""
+"QCL","Crops and livestock products","620","Portugal","5510","Production","0111","Wheat","2023","2023","t","34670","A","Official figure",""
+"QCL","Crops and livestock products","634","Qatar","5510","Production","0111","Wheat","2023","2023","t","2.4","A","Official figure",""
+"QCL","Crops and livestock products","410","Republic of Korea","5510","Production","0111","Wheat","2023","2023","t","51809","A","Official figure",""
+"QCL","Crops and livestock products","498","Republic of Moldova","5510","Production","0111","Wheat","2023","2023","t","1555023.8","A","Official figure",""
+"QCL","Crops and livestock products","642","Romania","5510","Production","0111","Wheat","2023","2023","t","9624070","A","Official figure",""
+"QCL","Crops and livestock products","643","Russian Federation","5510","Production","0111","Wheat","2023","2023","t","91500000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","646","Rwanda","5510","Production","0111","Wheat","2023","2023","t","16655.89","A","Official figure",""
+"QCL","Crops and livestock products","682","Saudi Arabia","5510","Production","0111","Wheat","2023","2023","t","922773.81","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","688","Serbia","5510","Production","0111","Wheat","2023","2023","t","3448700","A","Official figure",""
+"QCL","Crops and livestock products","703","Slovakia","5510","Production","0111","Wheat","2023","2023","t","2490600","A","Official figure",""
+"QCL","Crops and livestock products","705","Slovenia","5510","Production","0111","Wheat","2023","2023","t","145420","A","Official figure",""
+"QCL","Crops and livestock products","706","Somalia","5510","Production","0111","Wheat","2023","2023","t","1060.22","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","710","South Africa","5510","Production","0111","Wheat","2023","2023","t","2050000","A","Official figure",""
+"QCL","Crops and livestock products","728","South Sudan","5510","Production","0111","Wheat","2023","2023","t","","M","Missing value; data cannot exist",""
+"QCL","Crops and livestock products","724","Spain","5510","Production","0111","Wheat","2023","2023","t","4049230","A","Official figure",""
+"QCL","Crops and livestock products","729","Sudan","5510","Production","0111","Wheat","2023","2023","t","378000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","752","Sweden","5510","Production","0111","Wheat","2023","2023","t","2768200","A","Official figure",""
+"QCL","Crops and livestock products","756","Switzerland","5510","Production","0111","Wheat","2023","2023","t","447449","A","Official figure",""
+"QCL","Crops and livestock products","760","Syrian Arab Republic","5510","Production","0111","Wheat","2023","2023","t","3080351","A","Official figure",""
+"QCL","Crops and livestock products","762","Tajikistan","5510","Production","0111","Wheat","2023","2023","t","861000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","764","Thailand","5510","Production","0111","Wheat","2023","2023","t","1321.48","E","Estimated value",""
+"QCL","Crops and livestock products","788","Tunisia","5510","Production","0111","Wheat","2023","2023","t","400000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","792","Türkiye","5510","Production","0111","Wheat","2023","2023","t","22000000","A","Official figure",""
+"QCL","Crops and livestock products","795","Turkmenistan","5510","Production","0111","Wheat","2023","2023","t","1100000","E","Estimated value",""
+"QCL","Crops and livestock products","800","Uganda","5510","Production","0111","Wheat","2023","2023","t","25000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","804","Ukraine","5510","Production","0111","Wheat","2023","2023","t","21625170","A","Official figure",""
+"QCL","Crops and livestock products","784","United Arab Emirates","5510","Production","0111","Wheat","2023","2023","t","","M","Missing value; data cannot exist",""
+"QCL","Crops and livestock products","826","United Kingdom of Great Britain and Northern Ireland","5510","Production","0111","Wheat","2023","2023","t","13980000","A","Official figure",""
+"QCL","Crops and livestock products","834","United Republic of Tanzania","5510","Production","0111","Wheat","2023","2023","t","86522","A","Official figure",""
+"QCL","Crops and livestock products","840","United States of America","5510","Production","0111","Wheat","2023","2023","t","49313930","A","Official figure",""
+"QCL","Crops and livestock products","858","Uruguay","5510","Production","0111","Wheat","2023","2023","t","1343800","A","Official figure",""
+"QCL","Crops and livestock products","860","Uzbekistan","5510","Production","0111","Wheat","2023","2023","t","6471502.47","A","Official figure",""
+"QCL","Crops and livestock products","862","Venezuela (Bolivarian Republic of)","5510","Production","0111","Wheat","2023","2023","t","579.11","I","Value 
+imputed by a
+receiving 
+agency",""
+"QCL","Crops and livestock products","887","Yemen","5510","Production","0111","Wheat","2023","2023","t","100000","X","Figure from external organization","Unofficial figure"
+"QCL","Crops and livestock products","894","Zambia","5510","Production","0111","Wheat","2023","2023","t","277491.85","A","Official figure",""
+"QCL","Crops and livestock products","716","Zimbabwe","5510","Production","0111","Wheat","2023","2023","t","300000","X","Figure from external organization","Unofficial figure"
