@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 450,
+  "title": "Ghana v. Côte d'Ivoire Cocoa Bean Production (2019-2023)",
+  "data": { 
+    "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/FAOSTAT_data_en_10-10-2025.csv" 
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Value", "type": "quantitative" },
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "legend": { "title": "Country" }
+        },
+        "xOffset": { "field": "Area", "type": "nominal" },
+        "tooltip": [
+          {"field": "Area", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Value", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Area == 'Ghana'"},
+        {"aggregate": [{"op": "mean", "field": "Value", "as": "avg"}]}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "green", "strokeWidth": 2, "strokeDash": [4,2]},
+          "encoding": {
+            "y": {"field": "avg", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {"type": "text", "color": "green", "align": "left", "dx": 5, "dy": -5, "fontWeight": "bold"},
+          "encoding": {
+            "y": {"field": "avg", "type": "quantitative"},
+            "x": {"value": 4},  
+            "text": {"value": "Ghana average"}
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.Area == 'Côte d\\'Ivoire'"},
+        {"aggregate": [{"op": "mean", "field": "Value", "as": "avg"}]}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "black", "strokeWidth": 2, "strokeDash": [4,2]},
+          "encoding": {
+            "y": {"field": "avg", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {"type": "text", "color": "black", "align": "left", "dx": 5, "dy": -5, "fontWeight": "bold"},
+          "encoding": {
+            "y": {"field": "avg", "type": "quantitative"},
+            "x": {"value": 4},
+            "text": {"value": "Côte d'Ivoire average"}
+          }
+        }
+      ]
+    }
+  ]
+}
