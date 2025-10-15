@@ -62,7 +62,7 @@
       line-height: 1.6;
     }
 
-    #trade_chart {
+    #trade_chart, #producer_price_chart {
       width: 100%;
       height: 300px;
     }
@@ -84,13 +84,16 @@
         <h3>Cocoa Trade Chart</h3>
         <div id="trade_chart"></div>
       </div>
-      <div class="column">Column 2 [TBD]</div>
+      <div class="column">
+        <h3>Cocoa Producer Prices</h3>
+        <div id="producer_price_chart"></div>
+      </div>
       <div class="column">Column 3 [TBD]</div>
     </div>
   </div>
 
   <script>
-    // Choropleth map spec (existing)
+    // Choropleth map spec
     const mapSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "width": 800,
@@ -139,10 +142,9 @@
         }
       ]
     };
-
     vegaEmbed('#map', mapSpec, {actions: false});
 
-    // Embedded cocoa trade JSON spec (grouped column chart with country filter)
+    // Cocoa Trade Chart spec
     const tradeSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "width": "container",
@@ -180,7 +182,7 @@
           "field": "Element",
           "type": "nominal",
           "title": "Trade Type",
-          "scale": {"domain": ["Import value", "Export value"], "range": ["#1f77b4","#ff7f0e"]}
+          "scale": {"domain": ["Import value","Export value"], "range": ["#1f77b4","#ff7f0e"]}
         },
         "xOffset": {"field": "Element"},
         "tooltip": [
@@ -191,9 +193,55 @@
         ]
       }
     };
-
     vegaEmbed('#trade_chart', tradeSpec, {actions: false});
+
+    // Cocoa Producer Prices Chart spec (Column 2)
+    const producerPriceSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": "container",
+      "height": 300,
+      "title": "Cocoa Producer Prices (USD/tonne) by Country (Yearly)",
+      "data": {
+        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_producer_prices_FAOSTAT_data_en_10-14-2025.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"Year":"number","Value":"number"}
+        }
+      },
+      "params": [
+        {
+          "name": "country_selection",
+          "value": "Ghana",
+          "bind": {
+            "input": "select",
+            "options": [
+              "Afghanistan","Albania","Algeria","Angola","Argentina","Australia","Austria",
+              "Bangladesh","Belgium","Brazil","Cameroon","Canada","China","Côte d'Ivoire",
+              "Ecuador","France","Ghana","India","Indonesia","Malaysia","Mexico","Netherlands",
+              "Nigeria","Peru","Poland","Portugal","Singapore","South Africa","Spain",
+              "Switzerland","Thailand","Turkey","United Kingdom","United States","Viet Nam"
+            ],
+            "name": "Select Country: "
+          }
+        }
+      ],
+      "transform": [
+        {"filter": "datum.Value != null"},
+        {"filter": "datum.Area == country_selection"}
+      ],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "axis":{"title":"Year"}},
+        "y": {"field": "Value", "type": "quantitative", "axis":{"title":"Producer Price (USD/tonne)"}},
+        "color": {"field":"Area","type":"nominal","legend":null},
+        "tooltip": [
+          {"field":"Area","type":"nominal","title":"Country"},
+          {"field":"Year","type":"temporal"},
+          {"field":"Value","type":"quantitative"}
+        ]
+      }
+    };
+    vegaEmbed('#producer_price_chart', producerPriceSpec, {actions: false});
   </script>
 </body>
 </html>
-
