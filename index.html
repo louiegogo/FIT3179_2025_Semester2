@@ -2,218 +2,198 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cocoa Bean Production Charts</title>
+  <title>World Cocoa Production Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    html, body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fafafa;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .map-section {
+      flex: 1; /* Top 1/3 */
+      border-bottom: 2px solid #ddd;
+    }
+
+    .bottom-section {
+      flex: 2; /* Bottom 2/3 */
+      display: flex;
+    }
+
+    .column {
+      flex: 1;
+      border-right: 2px solid #ddd;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+
+    .column:last-child {
+      border-right: none;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .map-text {
+      padding: 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    #trade_chart {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Ghana v. Côte d'Ivoire Cocoa Bean Production (2019-2023)</h2>
-  <div id="cocoaChart"></div>
+  <div class="container">
+    <!-- Top third: map -->
+    <div class="map-section" id="map"></div>
+    <div class="map-text">
+      <p>
+        The above choropleth map shows world cocoa bean production in 2023.
+      </p>
+    </div>
 
-  <h2>Cocoa Bean Production by Region (2019–2022)</h2>
-  <div id="regionChart"></div>
+    <!-- Bottom two-thirds: 3 columns -->
+    <div class="bottom-section">
+      <div class="column">
+        <h3>Cocoa Trade Chart</h3>
+        <div id="trade_chart"></div>
+      </div>
+      <div class="column">Column 2 [TBD]</div>
+      <div class="column">Column 3 [TBD]</div>
+    </div>
+  </div>
 
   <script>
-    const bar_chart = {
+    // Choropleth map spec (existing)
+    const mapSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": 500,
-      "height": 450,
-      "title": "Ghana v. Côte d'Ivoire Cocoa Bean Production (2019-2023)",
-      "data": { 
-        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/FAOSTAT_data_en_10-10-2025.csv" 
-      },
+      "width": 800,
+      "height": 400,
+      "title": "World Cocoa Production (2023)",
+      "projection": {"type": "equirectangular"},
       "layer": [
         {
-          "mark": "bar",
-          "encoding": {
-            "x": { "field": "Year", "type": "ordinal" },
-            "y": { "field": "Value", "type": "quantitative" },
-            "color": {
-              "field": "Area",
-              "type": "nominal",
-              "legend": { "title": "Country" }
+          "data": {
+            "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/main/ne_110m_graticules_30.json",
+            "format": {"type": "topojson", "feature": "graticule"}
+          },
+          "mark": {"type": "geoshape", "stroke": "#888", "fill": null}
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+          },
+          "transform": [
+            {
+              "lookup": "properties.NAME",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_prod_FAOSTAT_data_en_10-14-2025.csv"
+                },
+                "key": "Area",
+                "fields": ["Value"]
+              }
             },
-            "xOffset": { "field": "Area", "type": "nominal" },
+            {"calculate": "datum.Value + 1", "as": "production_plus1"}
+          ],
+          "mark": {"type": "geoshape"},
+          "encoding": {
+            "color": {
+              "field": "production_plus1",
+              "type": "quantitative",
+              "title": "Cocoa production (tonnes, log scale)",
+              "scale": {"type": "log", "scheme": "browns"}
+            },
             "tooltip": [
-              {"field": "Area", "type": "nominal"},
-              {"field": "Year", "type": "ordinal"},
-              {"field": "Value", "type": "quantitative"}
+              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+              {"field": "Value", "type": "quantitative", "title": "Production"}
             ]
           }
-        },
-        {
-          "transform": [
-            {"filter": "datum.Area == 'Ghana'"},
-            {"aggregate": [{"op": "mean", "field": "Value", "as": "avg"}]}
-          ],
-          "layer": [
-            {
-              "mark": {"type": "rule", "color": "green", "strokeWidth": 2, "strokeDash": [4,2]},
-              "encoding": { "y": {"field": "avg", "type": "quantitative"} }
-            },
-            {
-              "mark": {"type": "text", "color": "green", "align": "left", "dx": 5, "dy": -5, "fontWeight": "bold"},
-              "encoding": { "y": {"field": "avg", "type": "quantitative"}, "x": {"value": 4}, "text": {"value": "Ghana average"} }
-            }
-          ]
-        },
-        {
-          "transform": [
-            {"filter": "datum.Area == 'Côte d\\'Ivoire'"},
-            {"aggregate": [{"op": "mean", "field": "Value", "as": "avg"}]}
-          ],
-          "layer": [
-            {
-              "mark": {"type": "rule", "color": "black", "strokeWidth": 2, "strokeDash": [4,2]},
-              "encoding": { "y": {"field": "avg", "type": "quantitative"} }
-            },
-            {
-              "mark": {"type": "text", "color": "black", "align": "left", "dx": 5, "dy": -5, "fontWeight": "bold"},
-              "encoding": { "y": {"field": "avg", "type": "quantitative"}, "x": {"value": 4}, "text": {"value": "Côte d'Ivoire average"} }
-            }
-          ]
         }
       ]
     };
 
-    vegaEmbed('#cocoaChart', bar_chart).then(res => {}).catch(console.error);
-    const line_chart = {
+    vegaEmbed('#map', mapSpec, {actions: false});
+
+    // Embedded cocoa trade JSON spec (grouped column chart with country filter)
+    const tradeSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Cocoa Bean Production by Region (2019–2022)",
-      "width": 700,
-      "height": 450,
+      "width": "container",
+      "height": 300,
+      "title": "Cocoa Powder Import vs Export Value (2014–2023)",
       "data": {
-        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/choc_prod_FAOSTAT_data_en_10-10-2025.csv"
+        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_powder_trade_FAOSTAT_data_en_10-14-2025.csv"
       },
-      "transform": [
-        {
-          "lookup": "Area",
-          "from": {
-            "data": {
-              "values": [
-                {"Area": "Côte d'Ivoire", "Region": "Africa"},
-                {"Area": "Ghana", "Region": "Africa"},
-                {"Area": "Nigeria", "Region": "Africa"},
-                {"Area": "Cameroon", "Region": "Africa"},
-                {"Area": "Togo", "Region": "Africa"},
-                {"Area": "Sierra Leone", "Region": "Africa"},
-                {"Area": "Liberia", "Region": "Africa"},
-                {"Area": "Equatorial Guinea", "Region": "Africa"},
-                {"Area": "São Tomé and Príncipe", "Region": "Africa"},
-                {"Area": "Madagascar", "Region": "Africa"},
-                {"Area": "Zimbabwe", "Region": "Africa"},
-                {"Area": "Brazil", "Region": "South America"},
-                {"Area": "Ecuador", "Region": "South America"},
-                {"Area": "Peru", "Region": "South America"},
-                {"Area": "Colombia", "Region": "South America"},
-                {"Area": "Venezuela (Bolivarian Republic of)", "Region": "South America"},
-                {"Area": "Bolivia (Plurinational State of)", "Region": "South America"},
-                {"Area": "Dominican Republic", "Region": "North America"},
-                {"Area": "Haiti", "Region": "North America"},
-                {"Area": "Mexico", "Region": "North America"},
-                {"Area": "Jamaica", "Region": "North America"},
-                {"Area": "Trinidad and Tobago", "Region": "North America"},
-                {"Area": "Indonesia", "Region": "Asia"},
-                {"Area": "Malaysia", "Region": "Asia"},
-                {"Area": "India", "Region": "Asia"},
-                {"Area": "Philippines", "Region": "Asia"},
-                {"Area": "Thailand", "Region": "Asia"},
-                {"Area": "Vietnam", "Region": "Asia"},
-                {"Area": "Sri Lanka", "Region": "Asia"},
-                {"Area": "China", "Region": "Asia"},
-                {"Area": "Papua New Guinea", "Region": "Oceania"},
-                {"Area": "Vanuatu", "Region": "Oceania"},
-                {"Area": "Solomon Islands", "Region": "Oceania"},
-                {"Area": "Samoa", "Region": "Oceania"},
-                {"Area": "Spain", "Region": "Europe"},
-                {"Area": "France", "Region": "Europe"},
-                {"Area": "Netherlands", "Region": "Europe"},
-                {"Area": "Switzerland", "Region": "Europe"},
-                {"Area": "United Kingdom", "Region": "Europe"},
-                {"Area": "Belgium", "Region": "Europe"},
-                {"Area": "Germany", "Region": "Europe"},
-                {"Area": "Serbia", "Region": "Europe"},
-                {"Area": "Ireland", "Region": "Europe"},
-                {"Area": "Italy", "Region": "Europe"},
-                {"Area": "Latvia", "Region": "Europe"},
-                {"Area": "Tunisia", "Region": "Europe"},
-                {"Area": "Croatia", "Region": "Europe"}
-              ]
-            },
-            "key": "Area",
-            "fields": ["Region"]
-          }
-        }
-      ],
       "params": [
         {
-          "name": "Continent_selection",
+          "name": "country_selection",
+          "value": "Afghanistan",
           "bind": {
             "input": "select",
-            "options": [null, "Africa", "Asia", "Europe", "North America", "South America", "Oceania"],
-            "labels": ["Show All","Africa","Asia","Europe","North America","South America","Oceania"],
-            "name": "Continent Selection: "
+            "options": [
+              "Afghanistan","Albania","Algeria","Angola","Argentina","Australia","Austria",
+              "Bangladesh","Belgium","Brazil","Cameroon","Canada","China","Côte d'Ivoire",
+              "Ecuador","France","Ghana","India","Indonesia","Malaysia","Mexico","Netherlands",
+              "Nigeria","Peru","Poland","Portugal","Singapore","South Africa","Spain",
+              "Switzerland","Thailand","Turkey","United Kingdom","United States","Viet Nam"
+            ],
+            "name": "Select Country: "
           }
         }
       ],
-      "layer": [
-        {
-          "mark": {"type": "line", "point": false},
-          "encoding": {
-            "x": {"field": "Year", "type": "ordinal", "title": "Year"},
-            "y": {"field": "Value", "type": "quantitative", "title": "Production (tonnes)"},
-            "color": {"field": "Area", "type": "nominal", "legend": {"title": "Country"}},
-            "opacity": {
-              "condition": {"test": "Continent_selection == null || datum.Region == Continent_selection","value": 1},
-              "value": 0.15
-            }
-          }
+      "transform": [
+        {"filter": "datum.Element == 'Import value' || datum.Element == 'Export value'"},
+        {"filter": "datum.Area == country_selection"}
+      ],
+      "mark": {"type": "bar", "width": {"band": 0.4}},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "axis": {"title": "Year"}},
+        "y": {"field": "Value", "type": "quantitative", "axis": {"title": "Trade Value (1000 USD)"}},
+        "color": {
+          "field": "Element",
+          "type": "nominal",
+          "title": "Trade Type",
+          "scale": {"domain": ["Import value", "Export value"], "range": ["#1f77b4","#ff7f0e"]}
         },
-        {
-          "mark": {"type": "point", "filled": true, "size": 60},
-          "encoding": {
-            "x": {"field": "Year", "type": "ordinal"},
-            "y": {"field": "Value", "type": "quantitative"},
-            "color": {"field": "Area", "type": "nominal"},
-            "opacity": {
-              "condition": {"test": "Continent_selection == null || datum.Region == Continent_selection","value": 1},
-              "value": 0.15
-            },
-            "tooltip": [
-              {"field": "Area", "type": "nominal", "title": "Country"},
-              {"field": "Region", "type": "nominal", "title": "Region"},
-              {"field": "Year", "type": "ordinal", "title": "Year"},
-              {"field": "Value", "type": "quantitative", "title": "Production (tonnes)"}
-            ]
-          }
-        },
-        {
-          "transform": [
-            { "aggregate": [{"op": "mean","field": "Value","as": "global_avg"}], "groupby": ["Year"] }
-          ],
-          "layer": [
-            {
-              "mark": {"type": "line", "color": "black", "strokeWidth": 2},
-              "encoding": {"x": {"field": "Year","type": "ordinal"},"y":{"field":"global_avg","type":"quantitative"}}
-            },
-            {
-              "mark": {"type": "point","filled": true,"color":"black","size":60},
-              "encoding": {
-                "x":{"field":"Year","type":"ordinal"},
-                "y":{"field":"global_avg","type":"quantitative"},
-                "tooltip":[
-                  {"field":"Year","type":"ordinal"},
-                  {"field":"global_avg","type":"quantitative","title":"Global Average"}
-                ]
-              }
-            }
-          ]
-        }
-      ]
+        "xOffset": {"field": "Element"},
+        "tooltip": [
+          {"field": "Area", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Element", "type": "nominal"},
+          {"field": "Value", "type": "quantitative"}
+        ]
+      }
     };
 
-    vegaEmbed('#regionChart', line_chart).then(res => {}).catch(console.error);
+    vegaEmbed('#trade_chart', tradeSpec, {actions: false});
   </script>
 </body>
 </html>
+
