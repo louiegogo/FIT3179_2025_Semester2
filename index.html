@@ -2,246 +2,762 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>World Cocoa Production Dashboard</title>
+  <title>🍫 From Brown to Gold: Global Cocoa and Chocolate Production Statistics ✨</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <style>
-    html, body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #fafafa;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    .map-section {
-      flex: 1; /* Top 1/3 */
-      border-bottom: 2px solid #ddd;
-    }
-
-    .bottom-section {
-      flex: 2; /* Bottom 2/3 */
-      display: flex;
-    }
-
-    .column {
-      flex: 1;
-      border-right: 2px solid #ddd;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-y: auto;
-    }
-
-    .column:last-child {
-      border-right: none;
-    }
-
-    #map {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto;
-    }
-
-    .map-text {
-      padding: 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-      color: #444;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    #trade_chart, #producer_price_chart {
-      width: 100%;
-      height: 300px;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+  <!-- Navigation Header -->
+  <header>
+    <nav>
+      <a href="#intro" class="active">Introduction</a>
+      <a href="#production">Production Map</a>
+      <a href="#region_prod">Continental Chocolate Production</a>
+      <a href="#supply">Import vs Supply</a>
+      <a href="#combined_trade">Ingredient Trade</a>
+      <a href="#prices">Producer Prices</a>
+      <a href="#conc">Conclusion</a>
+
+    </nav>
+  </header>
+
+  <!-- Introduction -->
   <div class="container">
-    <!-- Top third: map -->
-    <div class="map-section" id="map"></div>
-    <div class="map-text">
-      <p>
-        The above choropleth map shows world cocoa bean production in 2023.
-      </p>
-    </div>
-
-    <!-- Bottom two-thirds: 3 columns -->
-    <div class="bottom-section">
-      <div class="column">
-        <h3>Cocoa Trade Chart</h3>
-        <div id="trade_chart"></div>
+    <section id="intro">
+      <div class="chart-container">
+        <h1 style="font-size: 30px;">🍫 From Brown to Gold: Global Cocoa and Chocolate Production Statistics ✨</h1>
       </div>
-      <div class="column">
-        <h3>Cocoa Producer Prices</h3>
-        <div id="producer_price_chart"></div>
+      <div class="text-container">
+        <p>
+          When asked about the first sweet thing coming to mind, people often say chocolate. Rightfully so, this popular product can be found nearly everywhere, from selective boutiques, to a local supermarket, to milk bars (here in Australia). 
+          Oftentimes, we don't think about where it comes from - rather, focusing on eating it; however, chocolate has a long history, and can be broken down into 3 distinct periods of time.
+        <p>
+          <b style="font-size: 15px;">Mesoamerican Origins: </b> </p>
+          <p>
+          First cultivated and domesticated by Central Mesoamerican cultures such as the Mayans and the Aztecs around 1750 BC, they used the beans to create a bitter concoction called <i>xocolatl</i>, serving as a product for ritualistic purposes and for those deemed to be elite within their cultures' heirarchy.
+          Interestingly, there is evidence that the Mayans possessed their own methods of producing chocolate - they would ferment, then dry and roast the beans. The husks and were removed, and the remaining nibs (sacs) were mashed into a paste over fire. The paste became solid chunks, which were then boiled
+          in water, with the scum of the boil resulting in cocoa butter. These processes set the basic foundation of cocoa bean preparation into chocolate, and it was repeated into the 19th century.
+        </p>
+        <p>
+          <b style="font-size: 15px;">Spanish Introduction and Spread into Europe:</b>
+        </p>
+        <p>
+          Upon the 16th century European expeditions into these lands, Spaniards introduced cacao into Europe, and cocoa production increasing after Spain established territorial claims over Mexico. Initially an acquired taste due to it's bitterness, Spanish remained skeptical of chocolate until the 1600s, until methods such as adding sugar and cinnamon
+          improved its tastes. History then loses the pinpoint where chocolate wasd introduced into neighbouring countries and its spread through Europe, however, the methods of keeping chocolate sweet remained the same, though serving methods would differ depending on country. By the time the 18th century came to pass, chocolate had remained as a drink, but also was created in 
+          the forms of bars, desserts and even pasta - much like the Mesoamerican cultures, it was considered a product not for everyone, rather, for the upper middle class to the upper class for consumption.
+        </p>
+        <p>
+          <b style="font-size: 15px;">
+          Modern commercialisation and production:
+          </b>
+        </p>
+        <p>
+          Now more widely available in Europe, technology to better improve the taste of chocolate started to boom - advancements allowed the start of mass production of cocoa powder and later, cocoa butter, creating the basis for increased chocolate production.
+          A firm called Fry's is commonly believed to have created the first commercially-recognised chocolate bar, mixing cocoa butter and cocoa powder and sugar to create a non-brittle and dry chocolate product; considered revolutionary when the main method of chocolate consumption was liquid.
+          The further addition of milk alongside through the conching process (boiling liquid chocolate for days at a time to increase flavour and smoothness) invented by Rodolphe Lindt (yes, Lindt's founder) further improved chocolate's consistency and taste. 
+          Now with these techniques developed and the ingredients prepared in different ways, chocolate is now able to be mass produced in a variety of different ways and different flavours, resulting in a product that's rich in both history and flavour. 
+        </p>
       </div>
-      <div class="column">Column 3 [TBD]</div>
-    </div>
-  </div>
+    </section>
 
+    <!-- Metric Bubbles -->
+    <section id="metrics">
+      <div class="metrics-container">
+        <div class="metric-bubble">
+          <h3>Total 2023 Cocoa Yield</h3>
+          <p>5.6 million tonnes</p>
+        </div>
+        <div class="metric-bubble">
+          <h3>Total 2023 Cocoa Producers</h3>
+          <p>53 countries</p>
+        </div>
+        <div class="metric-bubble">
+          <h3>Total 2022 Chocolate Production</h3>
+          <p>2.95 million tonnes</p>
+        </div>
+        <div class="metric-bubble">
+          <h3>Total 2022 Chocolate Producers</h3>
+          <p>91 countries</p>
+        </div>
+      </div>
+      <div class="metrics-note">
+        <h3>PLEASE NOTE: I have used 2022 data for chocolate as there is no 2023 data</h3>
+      </div>
+    </section>
+
+    <!-- Cocoa Production Map -->
+    <section id="production">
+      <div class="production-wrapper">
+        <div class="chart-container">
+          <h2>Global Cocoa Bean Production (2023)</h2>
+          <div id="map" class="chart"></div>
+        </div>
+        <div class="text-container">
+          <p>
+            Starting off the journey, chocolate must be sourced from somewhere - cocoa beans! 
+            <p>
+            <b style=" font-size: 15px; color:gold;">We can find the highest producers of cocoa beans along the equatorial area.</b>
+            </p>
+          </p>
+          <p>
+            The biggest producer of cocoa beans is <b>Côte d'Ivoire</b>, with a ratio of <b>7.37 tonnes of cocoa bean production per square kilometer</b> in 2023. 
+            The next top cocoa producing countries are <b>Ghana</b> (2.74 tonnes per km²) and <b>Ecuador</b> (1.47 tonnes per km²). Côte d'Ivoire has the largest land mass, yet maintains the highest ratio of cocoa bean production to land. 
+            This is because cocoa is a major economic-driving product of the country - Côte d'Ivoire relies on cocoa (alongside coffee) and is agriculture-dependent for profit generation.
+          </p>
+          <p>
+            As mentioned in the introduction, we can also see that in Mesoamerican (the southern part of North America to the coast of South America facing the Pacific Ocean) areas are producing cocoa. 
+            Countries such as Peru, Mexico and Brazil all have much lower cocoa production to land production in comparison to Côte d'Ivoire, Ecuador and Ghana, but it can be also attributed to their larger landmasses; 
+            Peru is 4 times larger than Côte d'Ivoire, while Mexico and Brazil are about 16 and 68 times larger respectively. 
+          </p>
+          <p>
+            There is also production in the South-East Asia area, though, on a smaller scale due to the availability of land. Though the production to land ratio is slightly higher than the Mesoamerican regions,
+            production is notably less due to the scale of land comparison between the two areas.
+          </p>
+
+          <div class="fun-fact-container">
+            <h3>☝ Oh hey - Statistic!</h3>
+            <p>
+              Côte d'Ivoire produced <b>2377442.05 </b> tonnes of cocoa beans in 2023. It's only got a landmass of 322,462 km², but 27499 km² is dedicated to argiculture!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continent Chocolate Production -->
+    <section id="region_prod">
+      <div class="chart-container">
+        <h2>Chocolate Production by Continent (2019–2022)</h2>
+        <div id="region_prod_chart" class="chart"></div>
+      </div>
+      <div class="text-container">
+        <p style="font-size: 15px;">
+            <b style="color: red;">Please take note of the scale of the y-axis: each country has different quantities, though all are on a scale of 1000 tonnes. </b>
+          </p>
+        <p>
+          We've seen which countries are the top producers of cocoa beans, but which countries are the top producers of chocolates?
+        </p>
+        <p>
+          We can see based on different regions, there are a variety of different countries producing chocolate. Globally, <b style="font-size: 15px; color: gold;">the world's top producing country of chocolate from 2019-2023 was <b>Germany</b>, and the highest chocolate producing region is Europe.</b>
+          In comparison, the <b style="font-size: 15px; color: gold;">country producing the least amount of chocolate is <b>India</b>, but there is no general region which has the least amount of chcolate produced - it mixes between Asia and South America</b>. 
+        </p>
+        <p>
+          Interestingly, we can observe that the general trend is that <b style="font-size: 15px; color: gold;">the countries producing the most chocolate as the ones not producing any cocoa beans at all</b>, while those countries that produce cocoa beans don't produce as much chocolate. This suggests that <b>countries can be split into one of two categories - cocoa producers or chocolate producers</b>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cocoa Import vs Domestic Supply -->
+    <section id="supply">
+      <div class="production-wrapper">
+        <div class="chart-container">
+          <h2>Cocoa Beans: Import Quantity vs Domestic Supply Quantity (2010–2023)</h2>
+          <div id="supply_chart" class="chart"></div>
+        </div>
+        <div class="text-container">
+          <p>
+            <i style="font-size: smaller;">I've limited the subset to those countries producing chocolate to take a look at the relvant trade.</style></i>
+          </p>
+          <p>
+            We can see that each country has its own local supply of cocoa beans - however, not all countries with domestic supply are those that actually produce cocoa beans.
+            For those countries producing chocolate, we can see how much cocoa beans they have to import. 
+          </p>
+          <p style="font-size: 15px;">
+            <b style="color: red;">Please take note of the scale of the y-axis: each country has different quantities, though all are on a scale of 1000 tonnes. </b>
+          </p>
+          <p>
+            We see that <b>Germany</b> imports the majority of cocoa beans to produce its chocolate. As seen before on the map, Germany actually doesn't produce any cocoa beans,
+            but is the biggest producer of chocolate in the world during 2019-2022; Germany's whole chocolate industry is based on these imports. We can see that Germany has overall increased it's import
+            over the time period recorded, assumedly to keep up with increasing country demand, while it's domestic supply remains relatively stable.
+          </p>
+          <p>
+            <b>Côte d'Ivoire</b> on the other hand, is also a chocolate producer. Though it doesn't produce nearly as much chocolate as Germany, it doesn't need to import any cocoa beans as it is a native crop grown in its region.
+            Though we can infer that Côte d'Ivoire uses its domestic supply to create local chocolate production, it still does import some cocoa beans into the country. This could potentially be caused by the need for a different kind of cocoa for different chocolates - 
+            Côte d'Ivoire mainly produces <i>Forastero</i> cocoa beans, but other types, such as the Mexican-grown <i>Trinitario</i> aren't prevalent there, therefore need to be bought and imported.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingredient Trade -->
+    <section id="combined_trade">
+      <div class="trade-wrapper">
+        <div class="text-container">
+          <p>
+            <i style="font-size: smaller;">I've limited the subset to those countries producing chocolate to take a look at the relevant trade.</style></i>
+          </p>
+          <p>
+            Modernised chocolate is comprised of several items, including cocoa beans, cocoa powder and cocoa butter. Each item is treated differently within the global trade market, 
+            and have their own prices. We've seen above that each country has its own reserve of cocoa beans, but to produce chocolate requires other ingredients.
+          </p>
+          <p>
+            Like above, we see that <b>Germany</b> imports the majority of it's ingredients. This lines up with the lack of cocoa bean production - as <b style="font-size: 15px; color: gold;">all cocoa ingredients (butter and powder) stem from cocoa beans themselves, 
+            usually countries without production of cocoa beans have to import a majority of them to meet chocolate production demands</b>.
+          </p>
+          <p>
+            Interestingly, <b>Malaysia</b> and <b>Indonesia</b> import and export all ingredients. Both countries are cocoa bean producers, and by extension, also produce cocoa butter and powder. 
+            They import and export approximately the same amount of all three ingredients, suggesting that they could be producing certain types of cocoa beans, while importing different ones from other regions and exporting their own regional beans.
+            This is supported by their large import quantities of cocoa beans, but small cocoa butter and powder imports. Their ingredient exports differ, with Thailand exporting greater amounts of cocoa powder and butter in comparison to Malaysia, whereas the latter's exports are more balanced.
+          </p>
+          <p>
+            However, <b style="font-size: 15px; color: gold;"> cannot say that those countries that produce cocoa ingredients approximately import and export the same amount of each</b> - <b>Brazil, Colombia, (especially) Côte d'Ivoire</b> have major differences in the amount of ingredients exported and imported for chocolate production.
+          </p>
+        </div>
+
+        <div class="chart-container">
+          <h2>Combined Cocoa Ingredients Trade (Beans, Powder, and Butter) (2019–2023)</h2>
+          <div id="combined_trade_chart" class="chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Producer Prices -->
+    <section id="prices">
+      <div class="chart-container">
+        <h2>Cocoa Bean Producer Prices (USD/tonne)</h2>
+        <div id="producer_price_chart" class="chart"></div>
+      </div>
+      <div class="text-container">
+        <p>
+          Taking into consideration which countries are producers of cocoa beans, how much do countries actually gain when selling this crop? 
+        </p>
+        <p>
+          We can see that generally, <b style="font-size: 15px; color: gold;">producer prices remained stable until around 2010-2011, where there was a sharp increase in prices for many different countries, especially prominent for the top 3 producing countries</b>:
+          <b>Côte d'Ivoire, Ghana and Ecuador</b>. 
+        </p>
+        <p>
+          Côte d'Ivoire's increase in price was attirbuted to it's political landscape. In 2010, there was a threat of a <b><u>war within the country due to dissatisfaction with its election results</u></b> - riots were violent and resulted in 
+          civilian casualties, prompting production to stall due to peoples' fear and unease. This resulted in a reduction of supply, therefore driving up the prices of available cocoa beans. As Côte d'Ivoire was the largest producer (and still is in 2023)
+          of cocoa in 2010, the production shortage then fell to the burden of other countries' to make up, thereby driving their own prices to increase as well. At the end of 2010 to March 2011, tensions worsened the culminated into the Second Ivorian Civil War, 
+          further driving up the prices and forcing other countries to increase their prices. 
+        </p>
+        <p>
+          During the same period as the Second Ivorian Civil war, <u><b>the African region experienced severe droughts, therefore putting further stress on cocoa bean crops</u></b>. This further drove up global prices,
+          with other countries required to maintain and increase production due to upsurging chocolate demand with less production. 
+        </p>
+        <p>
+          Another interesting metric is Mexico - even before the global cocoa production decrease happening within the 2010-2011, <b style="font-size: 15px; color: gold;">Mexico had significantly higher prices comparitively to the top 3 producers</b>. This can be attributed to the combination of the <u><b>type of cocoa grown (<i>Criollo</i> and <i>Trinitario</i> species grown - these types are used more for artisan chocolates, rather than the mass produced variety of <i>Forastero</i>) and 
+          declining production due to disease and age</b></u> within the region. Like other regions, Mexico's prices increased during 2010-2011 due to the global shortage, and maintained post-war due to continuous low supply caused by low regional production. 
+        </p>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conc">
+      <div class="chart-container">
+        <h2>🍫 Conclusion: Our Chocolate-covered Findings ✨</h2>
+      </div>
+      <div class="text-container">
+        <p>From what we've seen, the world has a wide production of both cocoa and chocolate - far from the origins of Mexico more than a 1000 years ago. </p>
+        <p><b style="font-size: 15px; color: gold; text-align: center;">Equatorial countries are where cocoa is grown best, with Côte d'Ivoire's cocoa production being the world's largest producer.</b></p>
+        <p><b style="font-size: 15px; color: gold; text-align: center;">Europe doesn't produce any cocoa or related products, but is the largest quantity producer of chocolate region-wise - it's biggest producer is Germany.</b></p> 
+        <p><b style="font-size: 15px; color: gold; text-align: center;">Though the biggest producer of chocolate, Europe is still very much reliant on cocoa-producing countries - cocoa producing countries can rely on their own cocoa production for chocolate production, but export it for more profit.</b></p>
+        <p><b style="font-size: 15px; color: gold; text-align: center;">The global cocoa industry is incredibly reliant on Côte d'Ivoire as the globe's main supplier and is also extremely reliant on weather for the quality and quantity of cocoa produced.</b></p>
+        <p>In the time spanned from the Mesoamerican cultures, we certainly have come far from their version of chocolate. </p>
+      </div>
+    </section>
+
+    <footer>
+      <h3>Dataset sources are all from FAOSTAT - Food and Agriculture Organisation of The United Nations:</h3>
+      <p>FAOSTAT Supply Utilisation Accounts: <u><b>https://www.fao.org/faostat/en/#data/SCL</b></u> - production quantity, import and export quantity for Chocolate products nes, cocoa beans, cocoa butter, fat and oil and cocoa powder and cake</p>
+      <p>FAOSTAT Production - Crops and livestock products: <u><b>https://www.fao.org/faostat/en/#data/QCL</b></u> - production quantity for cocoa beans</p>
+      <p>FAOSTAT Trade - Producer Prices: <u><b>https://www.fao.org/faostat/en/#data/PPL</b></u> - Producer price (USD/tonne) for cocoa beans</p>
+      <p>FAOSTAT Food Balances <u><b>https://www.fao.org/faostat/en/#data/FBS</b></u> - Domestic Supply Quantity for cocoa beans and products</p>
+
+      <h3>Historical sources:</h3>
+      <p>History of Chocolate - <u><b>https://en.wikipedia.org/wiki/History_of_chocolate</b></u></p>
+      <p>Second Ivorian Civil War - <u><b>https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War</b></u></p>
+      <p>Author: Louisa Goh (33095604)</p>
+    </footer>
   <script>
-    // Choropleth map spec
+
+    // ---------- Navigation Active Link ----------
+    const navLinks = document.querySelectorAll('header a'); // navigation links are all collected in header
+    const sections = document.querySelectorAll('section'); // page sections like intro, supply are collected
+    window.addEventListener('scroll', () => { // sees which section is currently on the page
+      let current = '';
+      sections.forEach(sec => {
+        const sectionTop = sec.offsetTop - 80;
+        if (pageYOffset >= sectionTop) current = sec.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active'); // only shows the section on the page and 'deactivates' all ones - keeps active on .href matching the current one in nav bar
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // ---------- MAP ----------
     const mapSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "background": "transparent",
+    "height": 600,
+    "projection": {"type": "equirectangular"},
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        },
+        "mark": {"type": "geoshape", "stroke": "black", "fill": null, "opacity": 0.3}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+          "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        },
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/2023_cocoabeans_production_per_area.csv"
+              },
+              "key": "Area",
+              "fields": ["Production_per_km2"]
+            }
+          },
+          {"calculate": "datum.Production_per_km2 == null ? 0 : datum.Production_per_km2", "as": "production"}
+        ],
+        "mark": {"type": "geoshape", "stroke": "darkgray", "strokeWidth": 0.3},
+        "encoding": {
+          "color": {
+            "field": "production",
+            "type": "quantitative",
+            "title": "Cocoa production (tonnes) per km²",
+            "scale": {
+              "type": "linear",
+              "domain": [0, 0.01, 0.1, 0.5, 10],
+              "range": ["#feedde", "#fdbc85", "#fd8d3c", "#a0522d", "#3C280D"]
+            },
+            "legend": {
+              "orient": "bottom",
+              "titleFontSize": 10,
+              "labelFontSize": 12,
+              "offset": 0,
+            }
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "production", "type": "quantitative", "title": "Cocoa Production per km²", "format": ".2f"}
+          ]
+        }
+      }
+    ]
+  };
+
+vegaEmbed('#map', mapSpec, {actions: false});
+
+    // ---------- CONTINENTAL CHOCOLATE PRODUCTION ----------
+    const regionProdSpec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": 800,
-      "height": 400,
-      "title": "World Cocoa Production (2023)",
-      "projection": {"type": "equirectangular"},
+      "width": "container",
+      "height": 450,
+      "background": "transparent",
+      "config": {
+        "axis": {
+          "labelFontSize": 12,   
+          "titleFontSize": 12,    
+        }
+      },
+      "data": {
+        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/choc_prod_FAOSTAT_data_en_10-21-2025.csv"
+      },
+      "transform": [
+        {
+          "lookup": "Area",
+          "from": {
+            "data": {
+              "values": [
+                {"Area": "Côte d'Ivoire", "Region": "Africa"},
+                {"Area": "Zimbabwe", "Region": "Africa"},
+                {"Area": "Brazil", "Region": "South America"},
+                {"Area": "Colombia", "Region": "South America"},
+                {"Area": "Venezuela (Bolivarian Republic of)", "Region": "South America"},
+                {"Area": "Mexico", "Region": "North America"},
+                {"Area": "Indonesia", "Region": "Asia"},
+                {"Area": "Malaysia", "Region": "Asia"},
+                {"Area": "India", "Region": "Asia"},
+                {"Area": "Thailand", "Region": "Asia"},
+                {"Area": "China", "Region": "Asia"},
+                {"Area": "Switzerland", "Region": "Europe"},
+                {"Area": "Belgium", "Region": "Europe"},
+                {"Area": "Germany", "Region": "Europe"},
+                {"Area": "Serbia", "Region": "Europe"},
+                {"Area": "Ireland", "Region": "Europe"},
+                {"Area": "Italy", "Region": "Europe"},
+                {"Area": "Latvia", "Region": "Europe"},
+                {"Area": "Tunisia", "Region": "Europe"},
+                {"Area": "Croatia", "Region": "Europe"}
+              ]
+            },
+            "key": "Area",
+            "fields": ["Region"]
+          }
+        }
+      ],
+      "params": [
+        {
+          "name": "Continent_selection",
+          "bind": {
+            "input": "select",
+            "options": [null, "Africa", "Asia", "Europe", "North America", "South America"],
+            "labels": ["Show All","Africa","Asia","Europe","North America","South America"],
+            "name": "Continent Selection: "
+          }
+        }
+      ],
+      "encoding": {
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "legend": {
+            "title": "Country",
+            "orient": "bottom",
+            "titleFontSize": 12,
+            "labelFontSize": 12,
+            "offset": 0
+          },
+          "scale": {
+            "domain": [
+              "Côte d'Ivoire", "Zimbabwe",
+              "Brazil", "Colombia", "Venezuela (Bolivarian Republic of)",
+              "Mexico",
+              "Indonesia", "Malaysia", "India", "Thailand", "China",
+              "Switzerland", "Belgium", "Germany", "Serbia", "Ireland", "Italy", "Latvia", "Tunisia", "Croatia"
+            ],
+            "range": [
+              "#e60000", "#ff6666",
+              "#660066", "#993399", "#cc99cc",
+              "#ff9933",
+              "#004d00", "#008000", "#4d9900", "#80cc00", "#b3ff66",
+              "#000066", "#000099", "#3333cc", "#6666ff", "#9999ff", "#ccccff", "#e6e6ff", "#f0f0ff", "#f5f5ff"
+            ]
+          }
+        }
+      },
       "layer": [
         {
-          "data": {
-            "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/main/ne_110m_graticules_30.json",
-            "format": {"type": "topojson", "feature": "graticule"}
-          },
-          "mark": {"type": "geoshape", "stroke": "#888", "fill": null}
-        },
-        {
-          "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
-            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-          },
           "transform": [
             {
-              "lookup": "properties.NAME",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_prod_FAOSTAT_data_en_10-14-2025.csv"
-                },
-                "key": "Area",
-                "fields": ["Value"]
-              }
-            },
-            {"calculate": "datum.Value + 1", "as": "production_plus1"}
+              "filter": "Continent_selection == null || datum.Region == Continent_selection"
+            }
           ],
-          "mark": {"type": "geoshape"},
+          "mark": {"type": "line", "point": false},
           "encoding": {
-            "color": {
-              "field": "production_plus1",
-              "type": "quantitative",
-              "title": "Cocoa production (tonnes, log scale)",
-              "scale": {"type": "log", "scheme": "browns"}
-            },
+            "x": {"field": "Year", "type": "ordinal", "title": "Year", axis:{"labelAngle": -45, "format": "d"}},
+            "y": {"field": "Value", "type": "quantitative", "title": "Production (tonnes)"}
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "Continent_selection == null || datum.Region == Continent_selection"
+            }
+          ],
+          "mark": {"type": "point", "filled": true, "size": 60},
+          "encoding": {
+            "x": {"field": "Year", "type": "ordinal"},
+            "y": {"field": "Value", "type": "quantitative"},
             "tooltip": [
-              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Value", "type": "quantitative", "title": "Production"}
+              {"field": "Area", "type": "nominal", "title": "Country"},
+              {"field": "Region", "type": "nominal", "title": "Region"},
+              {"field": "Year", "type": "ordinal", "title": "Year"},
+              {"field": "Value", "type": "quantitative", "title": "Production (tonnes)"}
             ]
           }
         }
       ]
-    };
-    vegaEmbed('#map', mapSpec, {actions: false});
+    }
 
-    // Cocoa Trade Chart spec
-    const tradeSpec = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    vegaEmbed('#region_prod_chart', regionProdSpec, {actions: false});
+
+   // ---------- INGREDIENT TRADE ----------
+    const combinedTradeSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
       "width": "container",
-      "height": 300,
-      "title": "Cocoa Powder Import vs Export Value (2014–2023)",
+      "height": 500,
+      "background": "transparent",
+      "config": {
+        "axis": {
+          "labelFontSize": 12,   
+          "titleFontSize": 12,    
+        }
+      },
       "data": {
-        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_powder_trade_FAOSTAT_data_en_10-14-2025.csv"
+        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_ingredients_trade_FAOSTAT_data_en_10-21-2025.csv"
       },
       "params": [
         {
           "name": "country_selection",
-          "value": "Afghanistan",
+          "value": "Brazil",
           "bind": {
             "input": "select",
             "options": [
-              "Afghanistan","Albania","Algeria","Angola","Argentina","Australia","Austria",
-              "Bangladesh","Belgium","Brazil","Cameroon","Canada","China","Côte d'Ivoire",
-              "Ecuador","France","Ghana","India","Indonesia","Malaysia","Mexico","Netherlands",
-              "Nigeria","Peru","Poland","Portugal","Singapore","South Africa","Spain",
-              "Switzerland","Thailand","Turkey","United Kingdom","United States","Viet Nam"
+              "Brazil",
+              "Belgium",
+              "Colombia",
+              "Croatia",
+              "China",
+              "Côte d'Ivoire",
+              "Germany",
+              "India",
+              "Indonesia",
+              "Ireland",
+              "Italy",
+              "Latvia",
+              "Malaysia",
+              "Mexico",
+              "Serbia",
+              "Switzerland",
+              "Thailand",
+              "Tunisia",
+              "Venezuela (Bolivarian Republic of)",
+              "Zimbabwe"
             ],
-            "name": "Select Country: "
+            "name": "Select Country: ",
           }
         }
       ],
       "transform": [
-        {"filter": "datum.Element == 'Import value' || datum.Element == 'Export value'"},
-        {"filter": "datum.Area == country_selection"}
+        {"filter": "datum.Area == country_selection"},
+        {"filter": "datum.Element == 'Import quantity' || datum.Element == 'Export quantity'"},
+        {"filter": "datum.Unit == 't'"},
+        {
+          "calculate": "datum.Item == 'Cocoa beans' ? 'Cocoa Beans' : datum.Item == 'Cocoa butter, fat and oil' ? 'Cocoa Butter' : 'Cocoa Powder'",
+          "as": "Product"
+        }
       ],
-      "mark": {"type": "bar", "width": {"band": 0.4}},
+      "mark": {"type": "bar"},
       "encoding": {
-        "x": {"field": "Year", "type": "ordinal", "axis": {"title": "Year"}},
-        "y": {"field": "Value", "type": "quantitative", "axis": {"title": "Trade Value (1000 USD)"}},
+        "y": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year",
+          "sort": "ascending"
+        },
+        "x": {
+          "aggregate": "sum",
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Quantity (t)",
+          axis:{"labelAngle": -45, "format": "d"}
+        },
+        "yOffset": {"field": "Element"},
+        "color": {
+          "field": "Product",
+          "type": "nominal",
+          "title": "Product Type",
+          "scale": {
+            "domain": ["Cocoa Beans", "Cocoa Powder", "Cocoa Butter"],
+            "range": ["#550000", "#A52A2A", "#DAA520"],
+          },
+          "legend": {
+              "orient": "bottom",
+              "titleFontSize": 14,
+              "labelFontSize": 14,
+              "offset": 0,
+          },
+        },
+        "tooltip": [
+          {"field": "Area", "type": "nominal", "title": "Country"},
+          {"field": "Product", "type": "nominal"},
+          {"field": "Element", "type": "nominal", "title": "Trade Type"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Value", "type": "quantitative", "title": "Quantity (t)"}
+        ]
+      },
+      "config": {
+        "view": {"stroke": "transparent"},
+        "axis": {"labelFontSize": 10, "titleFontSize": 12}
+      }
+    };
+
+    vegaEmbed('#combined_trade_chart', combinedTradeSpec, {actions: false});
+
+  // ---------- IMPORT VS SUPPLY ----------
+  const supplySpec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 450,
+  "background": "transparent",
+  "config": {
+        "axis": {
+          "labelFontSize": 12,   
+          "titleFontSize": 12,    
+        }
+      },
+  "data": {
+    "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_bal_FAOSTAT_data_en_10-14-2025.csv"
+  },
+  "params": [
+    {
+      "name": "country_selection",
+      "value": "Brazil",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Brazil",
+          "Belgium",
+          "Colombia",
+          "Croatia",
+          "China",
+          "Côte d'Ivoire",
+          "Germany",
+          "India",
+          "Indonesia",
+          "Ireland",
+          "Italy",
+          "Latvia",
+          "Malaysia",
+          "Mexico",
+          "Serbia",
+          "Switzerland",
+          "Thailand",
+          "Tunisia",
+          "Venezuela (Bolivarian Republic of)",
+          "Zimbabwe"
+        ],
+        "name": "Select Country: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum['Element Code'] == '5611' || datum['Element Code'] == '5301'"},
+    {"filter": "datum.Area == country_selection"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "area", "opacity": 0.7, "interpolate": "monotone"},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "title": "Year", "sort": "ascending", axis:{"labelAngle": -45, "format": "d"}},
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Quantity (1000 t)",
+          "stack": "zero"
+        },
         "color": {
           "field": "Element",
           "type": "nominal",
-          "title": "Trade Type",
-          "scale": {"domain": ["Import value","Export value"], "range": ["#1f77b4","#ff7f0e"]}
+          "title": "Supply Type",
+          "legend": {
+            "orient": "bottom",
+            "titleFontSize": 14,
+            "labelFontSize": 14,
+            "offset": 0
+          },
+          "scale": {
+            "domain": ["Import quantity", "Domestic supply quantity"],
+            "range": ["#C5001A", "#FBEAE7"]
+          }
         },
-        "xOffset": {"field": "Element"},
         "tooltip": [
-          {"field": "Area", "type": "nominal"},
+          {"field": "Area", "type": "nominal", "title": "Country"},
           {"field": "Year", "type": "ordinal"},
-          {"field": "Element", "type": "nominal"},
-          {"field": "Value", "type": "quantitative"}
+          {"field": "Element", "type": "nominal", "title": "Supply Type"},
+          {"field": "Value", "type": "quantitative", "title": "Quantity (1000 t)"}
         ]
       }
-    };
-    vegaEmbed('#trade_chart', tradeSpec, {actions: false});
+    },
+    {
+      "mark": {"type": "line", "interpolate": "monotone", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Value", "type": "quantitative", "stack": "zero"},
+        "color": {
+          "field": "Element",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Import quantity", "Domestic supply quantity"],
+            "range": ["#1f77b4", "#ff7f0e"]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 10, "titleFontSize": 12}
+  }
+};
 
-    // Cocoa Producer Prices Chart spec (Column 2)
+vegaEmbed('#supply_chart', supplySpec, {actions: false});
+
+
+    // ---------- PRODUCER PRICES ----------
     const producerPriceSpec = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": "container",
-      "height": 300,
-      "title": "Cocoa Producer Prices (USD/tonne) by Country (Yearly)",
-      "data": {
-        "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_producer_prices_FAOSTAT_data_en_10-14-2025.csv",
-        "format": {
-          "type": "csv",
-          "parse": {"Year":"number","Value":"number"}
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 500,
+    "background": "transparent",
+    "config": {
+        "axis": {
+          "labelFontSize": 12,   
+          "titleFontSize": 12,    
         }
       },
-      "params": [
-        {
-          "name": "country_selection",
-          "value": "Ghana",
-          "bind": {
-            "input": "select",
-            "options": [
-              "Afghanistan","Albania","Algeria","Angola","Argentina","Australia","Austria",
-              "Bangladesh","Belgium","Brazil","Cameroon","Canada","China","Côte d'Ivoire",
-              "Ecuador","France","Ghana","India","Indonesia","Malaysia","Mexico","Netherlands",
-              "Nigeria","Peru","Poland","Portugal","Singapore","South Africa","Spain",
-              "Switzerland","Thailand","Turkey","United Kingdom","United States","Viet Nam"
-            ],
-            "name": "Select Country: "
-          }
+    "data": {
+      "url": "https://raw.githubusercontent.com/louiegogo/FIT3179_2025_Semester2/refs/heads/main/cocoa_producer_prices_FAOSTAT_data_en_10-14-2025.csv",
+      "format": {"type": "csv", "parse": {"Year":"number","Value":"number"}}
+    },
+    "params": [
+      {
+        "name": "country_selection",
+        "value": "Côte d'Ivoire",
+        "bind": {
+          "input": "select",
+          "options": [
+            "Brazil","Cameroon","Côte d'Ivoire","Ecuador","Ghana","India",
+            "Indonesia","Malaysia","Mexico","Nigeria","Peru","Thailand"
+          ],
+          "name": "Select Country: "
         }
-      ],
-      "transform": [
-        {"filter": "datum.Value != null"},
-        {"filter": "datum.Area == country_selection"}
-      ],
-      "mark": {"type": "line", "point": true},
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal", "axis":{"title":"Year"}},
-        "y": {"field": "Value", "type": "quantitative", "axis":{"title":"Producer Price (USD/tonne)"}},
-        "color": {"field":"Area","type":"nominal","legend":null},
-        "tooltip": [
-          {"field":"Area","type":"nominal","title":"Country"},
-          {"field":"Year","type":"temporal"},
-          {"field":"Value","type":"quantitative"}
-        ]
       }
-    };
-    vegaEmbed('#producer_price_chart', producerPriceSpec, {actions: false});
+    ],
+    "transform": [
+      {"filter": "datum.Value != null"},
+      {"filter": "datum.Area == country_selection"}
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "axis": {"title": "Year", "labelAngle": -45, "format": "d"}
+      },
+      "y": {
+        "field": "Value",
+        "type": "quantitative",
+        "axis": {"title": "Producer Price (USD/tonne)"}
+      },
+      "color": {
+        "field": "Value",
+        "type": "quantitative",
+        "scale": {
+          "domain": [0, 4000],
+          "range": ["#fffdd0", "#0c99ba", "#FF746C"]
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "Year", "type": "ordinal"},
+        {"field": "Value", "type": "quantitative", "title": "Producer Price (USD/tonne)"}
+      ]
+    }
+  };
+
+  vegaEmbed('#producer_price_chart', producerPriceSpec, {actions: false});
   </script>
 </body>
 </html>
