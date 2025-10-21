@@ -1,0 +1,358 @@
+/* ---------- Montserrat Font Styles ---------- */
+.montserrat-regular {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-bold {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-light {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* ---------- Base Styles ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  background-color: #3e2723; 
+  color: #fdf5e6;
+}
+
+h1, h2 {
+  color: #ffe0b2;
+  font-weight: 600;
+  text-align: center; 
+  margin-bottom: 10px;
+  
+}
+
+p {
+  color: #f5deb3;
+  font-size: small;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* ---------- Header Navigation ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #2d1b14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+header nav {
+  display: flex;
+  gap: 25px;
+}
+
+header a {
+  color: #ffe0b2;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+header a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #d2691e;
+  transition: width 0.3s ease;
+}
+
+header a:hover::after,
+header a.active::after {
+  width: 100%;
+}
+
+header a:hover {
+  color: #ffcc80;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1750px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+section {
+  background-color: #5d4037; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  width: 95%; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-container {
+  flex: 2 1 90%; 
+  min-width: 300px;
+}
+
+.text-container {
+  flex: 1 1 28%; 
+  min-width: 250px;
+  padding: 10px 15px;
+  background-color: #4e342e; 
+  border-radius: 8px;
+  min-width: 250px;
+  justify-content: center;
+}
+
+.chart {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #d7ccc8;
+  font-size: 0.9rem;
+}
+
+footer p {
+  text-align: center;
+  padding: 0px;
+  color: #d7ccc8;
+  font-size: 0.5rem;
+}
+
+footer h3 {
+  text-align: center;
+  padding: 0px;
+  color: #d7ccc8;
+  font-size: 0.6rem;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #8d6e63;
+  background-color: #4e342e;
+  color: #f5deb3;
+  font-size: 0.9rem;
+}
+
+.vega-bindings {
+  padding-left: 50px ; 
+  align-items: center;
+  color: #d7ccc8;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .chart-container {
+    flex: 2 1 65%;
+  }
+  .text-container {
+    flex: 1 1 32%;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    flex-direction: column;
+  }
+  .chart-container, .text-container {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------- Metric Bubbles ---------- */
+#metrics {
+  background-color: #4e342e; 
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid #3e2723;
+}
+
+.metrics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1200;
+}
+
+.metric-bubble {
+  background-color: #6a361e; 
+  color: #fff3e0; 
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px 30px;
+  min-width: 220px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.metric-bubble:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.metric-bubble h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #ffe0b2;
+  text-align: center;
+}
+
+.metric-bubble p {
+  margin: 8px 0 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff8e1;
+  text-align: center;
+}
+
+.metrics-note {
+  color: #fff3e0; 
+  min-width: 100px;
+  text-align: center;
+}
+
+.metrics-note h3 {
+  margin: 0;
+  font-size: 10px;
+  color: red;
+  text-align: center;
+}
+
+/* ---------- Responsive Metrics ---------- */
+
+@media (max-width: 768px) {
+  .metric-bubble {
+    min-width: 160px;
+    padding: 15px 20px;
+  }
+  .metric-bubble h3 {
+    font-size: 1rem;
+  }
+  .metric-bubble p {
+    font-size: 1.1rem;
+  }
+}
+
+.dual-chart-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.dual-chart-container .chart-container {
+  flex: 1 1 45%;
+  background-color: #5d4037; 
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* ---------- Map CSS - text, map and a little fun fact ---------- */
+
+.production-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.production-wrapper .chart-container {
+  flex: 2 1 65%; 
+  min-width: 300px;
+}
+
+.production-wrapper .text-container {
+  flex: 1 1 30%; 
+  min-width: 250px;
+  padding: 10px 15px;
+  background-color: #4e342e;
+  border-radius: 8px;
+  align-items: flex-start;
+}
+
+.fun-fact-container {
+  flex: 1 1 30%;
+  min-width: 250px;
+  background-color:rgb(83, 43, 14); 
+  padding: 10px 15px;
+  border-radius: 8px; 
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  margin-top: 15px; 
+  color:gold;
+}
+
+.fun-fact-container h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color:rgb(232, 204, 79); 
+}
+
+.fun-fact-container p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 5px 0 0;
+}
+
+/* ---------- Trade Section Layout ---------- */
+.trade-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-direction: row; 
+}
+
+.trade-wrapper .text-container {
+  flex: 1 1 30%;
+  min-width: 250px;
+  background-color: #4e342e;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.trade-wrapper .chart-container {
+  flex: 2 1 65%;
+  min-width: 300px;
+}
+
